@@ -22,21 +22,21 @@ class Print
       if index == 0
         transaction.each_with_index do |header, index|
           if index == 0
-            print header.ljust(20), " || "
+            print header.ljust(20)
           else
-            print header.ljust(10), " || "
+            print " || ", header.ljust(10)
           end
         end
         puts
       else
         transaction.each_with_index do |detail, index|
           if index == 0
-            print detail.ljust(20), " || "
+            print detail.ljust(20)
           elsif detail == ""
-            print "".ljust(10), " || "
+            print " || ", "".ljust(10)
           else
             dp_string = sprintf('%.2f', detail)
-            print dp_string.ljust(10), " || "
+            print " || ", dp_string.ljust(10)
           end
         end
         puts
