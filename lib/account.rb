@@ -7,22 +7,32 @@ class Account
   end
 
   def transaction (amount)
-    @balance += amount
-    current_balance = @balance
-    t = Time.new
-    formatted_time = t.strftime("%D %T")
-    if amount >= 0
-      @history << [formatted_time, amount, "", current_balance]
-    else
-      @history << [formatted_time, "", amount, current_balance]
-    end
+    update_balance(amount)
+      @history << [formatted_time, deposit?(amount), withdrawal?(amount), @balance]
   end
 
-  def print_statement
+  def print_latest_statement
     statement = Print.new(@history)
-    statement.pretty_print
-
+    statement.print_statement
   end
 
+  private
+
+  def deposit? (amount)
+    amount >= 0 ? amount : ""
+  end
+
+  def withdrawal? (amount)
+    amount < 0 ? amount : ""
+  end
+
+  def update_balance(amount)
+    @balance += amount
+  end
+
+  def formatted_time
+    t = Time.new
+    t.strftime("%D %T")
+  end
 
 end
