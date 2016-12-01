@@ -21,3 +21,7 @@ As a client
 So I can keep my finances in order
 I should be able to see my account balance
 ```
+
+###Future goals:
+
+*Refactor the transaction method from Account class to a Transaction class.*
