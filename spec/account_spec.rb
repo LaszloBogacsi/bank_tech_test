@@ -23,14 +23,9 @@ describe Account do
        expect(@account.history.length).to eq(1)
      end
 
-     it 'the date gets registered' do
-       @account.transaction(1000)
-       expect(@account.history[0][0]).to be_instance_of(Time)
-     end
-
      it 'the current_balance gets registered' do
        @account.transaction(1000)
-       expect(@account.history[0][2]).to eq(1000)
+       expect(@account.history[0][3]).to eq(1000)
      end
      it 'deposit' do
        @account.transaction(1000)
@@ -46,7 +41,7 @@ describe Account do
    end
    context 'able to print statent' do
      it '#print statement' do
-       expect(@account).to respond_to(:print_statement)
+       expect(@account).to respond_to(:print_latest_statement)
      end
    end
  end
